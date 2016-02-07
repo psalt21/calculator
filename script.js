@@ -1,24 +1,18 @@
 function calculate(value){
-  if(value === 1){
+  if(value === 1 || value === 2 || value === 3 || value === 4 || value === 5 || value === 6 || value === 7 || value === 8 || value === 9 || value === 0 || value === '+' || value === '-' || value === '/' || value === 'x' || value === '.'){
     buildResponse(value)
-  }else if(value===2){
-    buildResponse(value)
-  }else{
-    document.getElementById('result').innerText='';
-    document.getElementById('result');
-    var text = document.createElement('p');
-    text.innerText = 'You clicked the wrong button!!!';
-    result.appendChild(text);
+  }
+  if(value === 'c'){
+    document.getElementById('screen').innerHTML = '';
   }
 }
 
 function buildResponse(value){
-  document.getElementById('result').innerText='';
-  document.getElementById('result');
-  var text = document.createElement('p');
-  text.innerText = 'you pressed button ' + value;
-  result.appendChild(text);
+  document.getElementById('screen').innerHTML += value;
 }
+
+
+
 
 // document.querySelector('.button').addEventListener('click', function (e) {
   // console.log('you clicked my button', e);
