@@ -1,4 +1,15 @@
+body {
+  text-align: center;
+}
+
 button {
   height: auto;
-  width: auto;
+  width: 20px;
+}
+
+#screen {
+  width: 68px;
+  height: 18px;
+  background-color: lightgray;
+  display: inline-block;
 }
