@@ -5,14 +5,20 @@ function calculate(value){
   if(value === 'c'){
     document.getElementById('screen').innerHTML = '';
   }
+  if(value === "="){
+    add();
+  }
 }
 
 function buildResponse(value){
   document.getElementById('screen').innerHTML += value;
 }
 
+function add(){
+  var current = document.getElementById('screen').value;
+}
 
-
+console.log(document.getElementById('screen').value;)
 
 // document.querySelector('.button').addEventListener('click', function (e) {
   // console.log('you clicked my button', e);
