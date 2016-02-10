@@ -1,10 +1,19 @@
 function input(total){
+  var outputLocation = document.getElementById('screen');
   if(total === 'c'){
     document.getElementById('screen').innerText = '';
-  }else if(total === "="){
+  }else if(total === '='){
     calculate();
+  }else if(total === '.'){
+    if(outputLocation.innerText.indexOf('.') !== -1){
+      buildResponse('total');
+    }
+  }else if(total === '+' && outputLocation.innerText.slice(-1) === total){
+    deleteLast();
+  }else if(total === '/' && outputLocation.innerText.slice(-1) === total){
+    deleteLast();
   }else{
-    buildResponse(total)
+    buildResponse(total);
   }
 }
 
@@ -14,12 +23,14 @@ function buildResponse(total){
 }
 
 function calculate(){
-  var test = document.getElementById('screen');
-  test.innerText = eval(test.innerText);
-  console.log(test);
+  var outputLocation = document.getElementById('screen');
+  outputLocation.innerText = eval(outputLocation.innerText);
+  console.log(outputLocation.innerText.slice(-1));
 }
 
-
+function deleteLast(){
+  outputLocation.innerText.substring(0, outputLocation.length - 1);
+}
 
 // document.querySelector('.button').addEventListener('click', function (e) {
   // console.log('you clicked my button', e);
