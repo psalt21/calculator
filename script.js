@@ -1,21 +1,22 @@
-function calculate(value){
-  if(value === 1 || value === 2 || value === 3 || value === 4 || value === 5 || value === 6 || value === 7 || value === 8 || value === 9 || value === 0 || value === '+' || value === '-' || value === '/' || value === 'x' || value === '.'){
-    buildResponse(value)
-  }
-  if(value === 'c'){
-    document.getElementById('screen').innerHTML = '';
-  }
-  if(value === "="){
-    add();
+function input(total){
+  if(total === 'c'){
+    document.getElementById('screen').innerText = '';
+  }else if(total === "="){
+    calculate();
+  }else{
+    buildResponse(total)
   }
 }
 
-function buildResponse(value){
-  document.getElementById('screen').innerHTML += value;
+function buildResponse(total){
+  var grabInput = document.getElementById('screen');
+  grabInput.innerText += total;
 }
 
-function add(){
-  var current = document.getElementById('screen').value;
+function calculate(){
+  var test = document.getElementById('screen');
+  test.innerText = eval(test.innerText);
+  console.log(test);
 }
 
 

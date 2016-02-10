@@ -6,6 +6,7 @@ body {
 button {
   height: auto;
   width: 20px;
+  padding: 10px 10px;
 }
 
 #screen {
@@ -13,4 +14,6 @@ button {
   height: 18px;
   background-color: lightgray;
   display: inline-block;
+  text-align: right;
+  padding: 0 5px;
 }
