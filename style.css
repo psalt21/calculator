@@ -5,8 +5,8 @@ body {
 
 #calc-body {
   width: 305px;
-  height: 220px;
-  background-color: yellow;
+  height: 243px;
+  background-color: #ABABAB;
   margin:0 auto;
   padding-top: 15px;
   margin-top: 80px;
@@ -17,12 +17,38 @@ button, #clear {
   height: 35px;
   width: 60px;
   padding: -2px 10px;
-  margin: 3px 2px;
+  margin: 6px 2px;
   border-radius: 3px;
   border-style: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
+  background-color: white;
+  color: gray;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
+.calc-button {
+  background-color: #D27A3C;
+  color: white;
+}
+
+.calc-button:hover {
+  background-color: #903C00;
+}
+
+#clear {
+  background-color: #38A3FF;
+  position: absolute;
+  left: 17px;
+  color: white;
+}
+
+#clear:hover {
+  background-color: #1962A0;
 }
 
 #top-line {
@@ -31,22 +57,20 @@ button, #clear {
   margin-bottom: 2px;
 }
 
-#clear{
-  position: absolute;
-  left: 16px;
-}
-
 #screen {
   position: absolute;
   right: 17px;
+  top: 3px;
   width: 191px;
-  height: 25px;
+  height: 28px;
   background-color: lightgray;
   display: inline-block;
   text-align: right;
   margin: 3px 2px;
   border-radius: 3px;
   font-weight: bold;
-  font-size: 1em;
-  padding: 10px 8px 0 0
+  font-size: 1.25em;
+  padding: 7px 8px 0 0;
+  color: #443F3F;
+  overflow: hidden;
 }
