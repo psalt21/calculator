@@ -31,13 +31,22 @@ button:hover {
   background-color: lightgray;
 }
 
+button:active {
+  background-color: darkgray;
+  color: white;
+}
+
 .calc-button {
   background-color: #D27A3C;
   color: white;
 }
 
 .calc-button:hover {
-  background-color: #903C00;
+  background-color: #A9612F;
+}
+
+.calc-button:active {
+  background-color: #753B11;
 }
 
 #clear {
@@ -48,7 +57,11 @@ button:hover {
 }
 
 #clear:hover {
-  background-color: #1962A0;
+  background-color: #3B80BB;
+}
+
+#clear:active {
+  background-color: #0C4E86;
 }
 
 #top-line {
