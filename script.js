@@ -1,5 +1,6 @@
 function input(total){
   var outputLocation = document.getElementById('screen');
+  var lastChar = outputLocation.innerText.slice(-1);
   if(total === 'c'){
     document.getElementById('screen').innerText = '';
   }else if(total === '='){
@@ -8,9 +9,7 @@ function input(total){
     if(outputLocation.innerText.indexOf('.') !== -1){
       buildResponse('total');
     }
-  }else if(total === '+' && outputLocation.innerText.slice(-1) === total){
-    deleteLast();
-  }else if(total === '/' && outputLocation.innerText.slice(-1) === total){
+  }else if(total === total && lastChar === total){
     deleteLast();
   }else{
     buildResponse(total);
