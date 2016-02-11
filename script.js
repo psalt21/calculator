@@ -1,15 +1,26 @@
+var outputLocation = document.getElementById('screen');
+
 function input(total){
-  var outputLocation = document.getElementById('screen');
-  var lastChar = outputLocation.innerText.slice(-1);
+  var string = outputLocation.innerText;
+  var strLength = string.length;
+  var lastChar = string.charAt(strLength - 1);
   if(total === 'c'){
-    document.getElementById('screen').innerText = '';
+    outputLocation.innerText = '';
   }else if(total === '='){
     calculate();
-  }else if(total === '.'){
-    if(outputLocation.innerText.indexOf('.') !== -1){
-      buildResponse('total');
-    }
-  }else if(total === total && lastChar === total){
+  }else if(total === '.' && outputLocation.innerText.indexOf('.') !== -1){
+      deleteLast();
+  }else if(total >= 0){
+    buildResponse(total);
+  }else if(total === '+' && lastChar === '/' || lastChar === '*' || lastChar === '-' || lastChar === '+' || lastChar === '.'){
+    deleteLast();
+  }else if(total === '-' && lastChar === '/' || lastChar === '*' || lastChar === '+' || lastChar === '-' || lastChar === '.'){
+    deleteLast();
+  }else if(total === '/' && lastChar === '*' || lastChar === '+' || lastChar === '-' || lastChar === '/' || lastChar === '.'){
+    deleteLast();
+  }else if(total === '*' && lastChar === '/' ||  lastChar === '+' || lastChar === '-' || lastChar === '*'){
+    deleteLast();
+  }else if(total === '.' && lastChar === '/' ||  lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '.'){
     deleteLast();
   }else{
     buildResponse(total);
@@ -17,18 +28,16 @@ function input(total){
 }
 
 function buildResponse(total){
-  var grabInput = document.getElementById('screen');
-  grabInput.innerText += total;
+  outputLocation.innerText += total;
 }
 
 function calculate(){
-  var outputLocation = document.getElementById('screen');
   outputLocation.innerText = eval(outputLocation.innerText);
-  console.log(outputLocation.innerText.slice(-1));
 }
 
 function deleteLast(){
-  outputLocation.innerText.substring(0, outputLocation.length - 1);
+  var string = outputLocation.innerText;
+  string = string.substring(0, string.length - 1);
 }
 
 // document.querySelector('.button').addEventListener('click', function (e) {
