@@ -1,49 +1,78 @@
-var outputLocation = document.getElementById('screen');
+function input(char){
+  if(isValid(char)){
+    addToScreen(char);
+  }
 
-function input(total){
-  var string = outputLocation.innerText;
-  var strLength = string.length;
-  var lastChar = string.charAt(strLength - 1);
-  if(total === 'c'){
-    outputLocation.innerText = '';
-  }else if(total === '='){
-    calculate();
-  }else if(total === '.' && outputLocation.innerText.indexOf('.') !== -1){
-      deleteLast();
-  }else if(total >= 0){
-    buildResponse(total);
-  }else if(total === '+' && lastChar === '/' || lastChar === '*' || lastChar === '-' || lastChar === '+' || lastChar === '.'){
-    deleteLast();
-  }else if(total === '-' && lastChar === '/' || lastChar === '*' || lastChar === '+' || lastChar === '-' || lastChar === '.'){
-    deleteLast();
-  }else if(total === '/' && lastChar === '*' || lastChar === '+' || lastChar === '-' || lastChar === '/' || lastChar === '.'){
-    deleteLast();
-  }else if(total === '*' && lastChar === '/' ||  lastChar === '+' || lastChar === '-' || lastChar === '*'){
-    deleteLast();
-  }else if(total === '.' && lastChar === '/' ||  lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '.'){
-    deleteLast();
-  }else{
-    buildResponse(total);
+  function isValid(char){
+    // if operand, then add to screen
+    if(isOperand(char)){
+      return true;
+    }
+    // only one operator in a row
+    else if(isOperator(char) && lastInputNotOperator(char)){
+      return true;
+    }
+    // create isDecimal function and isNotDuplicateDecimal function
+    else if(char === '.' && isNotDuplicateDecimal(char)){
+      return true;
+    }
+    // if operator is added set decimal flag as true
+
+    // if one operator is added on top of another replace it with new one
+
+    // if after calculation is output and operand is added replace current string with new operand
+
+    // clear screen
+    else if(char === 'c'){
+      clearScreen();
+    }else if(char === '='){
+      calculate();
+    }
+  }
+
+  function isOperand(char){
+    console.log(char);
+    var operands = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    return operands.indexOf(char) !== -1;
+  }
+
+  function isOperator(char){
+    var operators = ['+', '-', '*', '/'];
+    return operators.indexOf(char) !== -1;
+  }
+
+  function lastInputNotOperator(){
+    var lastChar = getScreen().innerText;
+    lastChar = lastChar[lastChar.length-1];
+    return !isOperator(lastChar);
+  }
+
+  function isNotDuplicateDecimal(char){
+    var lastChar = getScreen().innerText;
+    lastChar = lastChar[lastChar.length-1];
+    if(lastChar === '.'){
+      return !isOperator(lastChar);
+    }
   }
 }
 
-function buildResponse(total){
-  outputLocation.innerText += total;
+function getScreen() {
+  return document.getElementById('screen');
+}
+
+function addToScreen(char){
+  getScreen().innerText += char;
 }
 
 function calculate(){
-  outputLocation.innerText = eval(outputLocation.innerText);
+  getScreen().innerText = eval(getScreen().innerText);
+}
+
+function clearScreen(){
+  getScreen().innerText = '';
 }
 
 function deleteLast(){
-  var string = outputLocation.innerText;
+  var string = getScreen().innerText;
   string = string.substring(0, string.length - 1);
 }
-
-// document.querySelector('.button').addEventListener('click', function (e) {
-  // console.log('you clicked my button', e);
-  // document.getElementById('result');
-  // var text = document.createElement('p');
-  // text.innerText = 'you pressed button ';
-  // result.appendChild(text);
-// });
