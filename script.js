@@ -9,18 +9,22 @@ function input(char){
       return true;
     }
     // only one operator in a row
-    else if(isOperator(char) && lastInputNotOperator(char)){
+    else if(isOperator(char) && lastInputNotOperator()){
       return true;
     }
     // create isDecimal function and isNotDuplicateDecimal function
-    else if(char === '.' && isNotDuplicateDecimal(char)){
+    else if(isDecimal(char) && lastInputNotDecimal()){
       return true;
     }
-    // if operator is added set decimal flag as true
-
+    // if only one decimal since last operator set to true
+    else if(isDecimal(char) && noDecimalSinceLastOperator()){
+      return true;
+    }
     // if one operator is added on top of another replace it with new one
 
     // if after calculation is output and operand is added replace current string with new operand
+
+    // if screen blank then treat '' empty string as operator
 
     // clear screen
     else if(char === 'c'){
@@ -47,13 +51,23 @@ function input(char){
     return !isOperator(lastChar);
   }
 
-  function isNotDuplicateDecimal(char){
+  function isDecimal(char){
+    var decimal = ['.'];
+    return decimal.indexOf(char) !== -1;
+  }
+
+  function lastInputNotDecimal(){
     var lastChar = getScreen().innerText;
     lastChar = lastChar[lastChar.length-1];
-    if(lastChar === '.'){
-      return !isOperator(lastChar);
-    }
+    console.log(lastChar);
+    return !isDecimal(lastChar);
   }
+
+  function noDecimalSinceLastOperator(){
+    // if string idex of most recent operator is greater than string index of most recent decimal then return true
+    var lastOperatoe
+  }
+
 }
 
 function getScreen() {
